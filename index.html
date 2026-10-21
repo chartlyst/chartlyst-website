@@ -4,14 +4,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chartlyst | Disciplined Investing, Option Selling & Algo Trading</title>
+  <title>Chartlyst | Mastering Markets. Defining the Edge.</title>
   <meta name="description"
     content="Chartlyst offers personalized online classes in price action, option selling and algo trading. Learn rule-based trading with a capital protection focus." />
 
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Lucide Icons via CDN -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Lucide Icons via CDN (version pinned for stability) -->
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+  <!-- Font Awesome (brand icons: WhatsApp, Instagram) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,85 +94,142 @@
       color: transparent;
     }
 
+    /* Tagline shimmer (hero) */
+    .tagline-gradient {
+      background: linear-gradient(90deg, #00E676, #10B981, #FBBF24, #10B981, #00E676);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shimmer 6s linear infinite;
+    }
+
+    @keyframes shimmer {
+      to {
+        background-position: 200% center;
+      }
+    }
+
     /* Offset anchor scrolling for sticky header */
     section[id] {
       scroll-margin-top: 88px;
+    }
+
+    /* Slide-in menu panel */
+    #menuPanel {
+      transform: translateX(100%);
+      transition: transform .3s ease;
+    }
+
+    #menuPanel.open {
+      transform: translateX(0);
+    }
+
+    #menuOverlay {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s ease;
+    }
+
+    #menuOverlay.open {
+      opacity: 1;
+      pointer-events: auto;
     }
   </style>
 </head>
 
 <body class="font-sans antialiased">
 
-  <!-- ===================== 1. NAVIGATION BAR ===================== -->
-  <header class="fixed top-0 inset-x-0 z-50 bg-ink/85 backdrop-blur border-b border-slate2">
-    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+  <!-- ===================== 1. TOP BAR ===================== -->
+  <header class="fixed top-0 inset-x-0 z-40 bg-ink/85 backdrop-blur border-b border-slate2">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
 
-      <!-- Left: Logo + brand -->
+      <!-- Left: Logo + brand + tagline -->
       <a href="#welcome" class="flex items-center gap-3">
         <img src="logo.png" alt="Chartlyst Logo" class="h-10 w-auto">
-        <span class="text-2xl font-bold tracking-tight text-white">Chartlyst</span>
+        <div class="leading-tight">
+          <span class="block text-2xl font-bold tracking-tight text-white">Chartlyst</span>
+          <!-- Tagline in top bar (hidden on very small screens; shown in hero instead) -->
+          <span class="hidden sm:block text-[11px] font-medium tracking-wide text-neon/90">Mastering Markets. Defining
+            the Edge.</span>
+        </div>
       </a>
 
-      <!-- Center: Links (desktop) -->
-      <ul class="hidden xl:flex items-center gap-7 text-sm font-medium text-muted">
-        <li><a href="#welcome" class="hover:text-neon transition">Welcome</a></li>
-        <li><a href="#why" class="hover:text-neon transition">Why Option Selling</a></li>
-        <li><a href="#algo" class="hover:text-neon transition">Algo Trading</a></li>
-        <li><a href="#mentorship" class="hover:text-neon transition">Mentorship</a></li>
-        <li><a href="#courses" class="hover:text-neon transition">Courses</a></li>
-        <li><a href="#demat" class="hover:text-neon transition">Free Demat</a></li>
-        <li><a href="#contact" class="hover:text-neon transition">Contact</a></li>
-      </ul>
-
-      <!-- Right: CTAs -->
-      <div class="hidden xl:flex items-center gap-3">
-        <a href="https://wa.me/919995552664" target="_blank" rel="noopener"
-          class="glow-btn inline-flex items-center gap-2 bg-neon text-ink font-semibold px-5 py-2.5 rounded-lg">
-          <i data-lucide="message-circle" class="w-4 h-4"></i> Enquire on WhatsApp
+      <!-- Right: WhatsApp icon, Instagram icon, Menu button -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="https://wa.me/919995552664" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"
+          class="glow-btn w-10 h-10 rounded-full bg-neon text-ink flex items-center justify-center text-xl">
+          <i class="fa-brands fa-whatsapp"></i>
         </a>
         <a href="https://instagram.com/chartlyst" target="_blank" rel="noopener" aria-label="Instagram @chartlyst"
-          class="inline-flex items-center gap-2 text-muted hover:text-neon border border-slate2 hover:border-neon/50 px-3 py-2.5 rounded-lg transition">
-          <i data-lucide="instagram" class="w-5 h-5"></i>
-          <span class="text-sm">@chartlyst</span>
+          class="w-10 h-10 rounded-full border border-slate2 text-white hover:text-neon hover:border-neon/60 flex items-center justify-center text-lg transition">
+          <i class="fa-brands fa-instagram"></i>
         </a>
+        <button id="menuBtn" aria-label="Open menu" aria-expanded="false"
+          class="h-10 px-3 sm:px-4 rounded-full border border-slate2 text-white hover:text-neon hover:border-neon/60 flex items-center gap-2 transition">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+          <span class="hidden sm:inline text-sm font-semibold">Menu</span>
+        </button>
       </div>
-
-      <!-- Mobile menu toggle -->
-      <button id="menuBtn" class="xl:hidden p-2 text-white hover:text-neon transition" aria-label="Toggle menu">
-        <i data-lucide="menu" class="w-7 h-7"></i>
-      </button>
     </nav>
-
-    <!-- Mobile menu panel -->
-    <div id="mobileMenu" class="hidden xl:hidden bg-navy border-t border-slate2">
-      <ul class="px-4 py-4 space-y-1 text-muted font-medium">
-        <li><a href="#welcome" class="block py-2.5 hover:text-neon">Welcome</a></li>
-        <li><a href="#why" class="block py-2.5 hover:text-neon">Why Option Selling</a></li>
-        <li><a href="#algo" class="block py-2.5 hover:text-neon">Algo Trading</a></li>
-        <li><a href="#mentorship" class="block py-2.5 hover:text-neon">Mentorship</a></li>
-        <li><a href="#courses" class="block py-2.5 hover:text-neon">Courses</a></li>
-        <li><a href="#demat" class="block py-2.5 hover:text-neon">Free Demat</a></li>
-        <li><a href="#contact" class="block py-2.5 hover:text-neon">Contact</a></li>
-      </ul>
-      <div class="px-4 pb-5 flex flex-col gap-3">
-        <a href="https://wa.me/919995552664" target="_blank" rel="noopener"
-          class="glow-btn inline-flex justify-center items-center gap-2 bg-neon text-ink font-semibold px-5 py-3 rounded-lg">
-          <i data-lucide="message-circle" class="w-4 h-4"></i> Enquire on WhatsApp
-        </a>
-        <a href="https://instagram.com/chartlyst" target="_blank" rel="noopener"
-          class="inline-flex justify-center items-center gap-2 text-white border border-slate2 px-5 py-3 rounded-lg hover:border-neon/50">
-          <i data-lucide="instagram" class="w-4 h-4"></i> @chartlyst
-        </a>
-      </div>
-    </div>
   </header>
+
+  <!-- Menu overlay + slide-in panel -->
+  <div id="menuOverlay" class="fixed inset-0 z-40 bg-black/60"></div>
+  <aside id="menuPanel"
+    class="fixed top-0 right-0 z-50 h-full w-72 sm:w-80 bg-navy border-l border-slate2 flex flex-col">
+    <div class="h-16 sm:h-20 px-5 flex items-center justify-between border-b border-slate2">
+      <span class="font-bold text-lg">Menu</span>
+      <button id="menuClose" aria-label="Close menu" class="p-2 text-muted hover:text-neon transition">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+    </div>
+    <ul class="flex-1 overflow-y-auto px-3 py-4 space-y-1 font-medium text-slate-200">
+      <li><a href="#welcome" class="block px-3 py-3 rounded-lg hover:bg-slate2 hover:text-neon transition">Welcome</a>
+      </li>
+      <li><a href="#why" class="block px-3 py-3 rounded-lg hover:bg-slate2 hover:text-neon transition">Why Option
+          Selling</a></li>
+      <li><a href="#algo" class="block px-3 py-3 rounded-lg hover:bg-slate2 hover:text-neon transition">Algo Trading</a>
+      </li>
+      <li><a href="#mentorship"
+          class="block px-3 py-3 rounded-lg hover:bg-slate2 hover:text-neon transition">Mentorship</a></li>
+      <li><a href="#about-mentor" class="block px-3 py-3 rounded-lg hover:bg-slate2 hover:text-neon transition">Meet
+          Your Mentor</a></li>
+      <li><a href="#courses" class="block px-3 py-3 rounded-lg hover:bg-slate2 hover:text-neon transition">Courses</a>
+      </li>
+      <li><a href="#demat" class="block px-3 py-3 rounded-lg hover:bg-slate2 hover:text-neon transition">Free Demat</a>
+      </li>
+      <li><a href="#contact" class="block px-3 py-3 rounded-lg hover:bg-slate2 hover:text-neon transition">Contact</a>
+      </li>
+    </ul>
+    <div class="p-5 border-t border-slate2">
+      <a href="https://wa.me/919995552664" target="_blank" rel="noopener"
+        class="glow-btn flex justify-center items-center gap-2 bg-neon text-ink font-semibold px-5 py-3 rounded-lg">
+        <i class="fa-brands fa-whatsapp text-lg"></i> Enquire on WhatsApp
+      </a>
+    </div>
+  </aside>
 
   <main>
 
     <!-- ===================== 2. HERO SECTION ===================== -->
-    <section id="welcome" class="hero-bg relative pt-36 pb-20 overflow-hidden">
+    <section id="welcome" class="hero-bg relative pt-32 sm:pt-40 pb-20 overflow-hidden">
       <div class="grid-overlay absolute inset-0 pointer-events-none"></div>
       <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+        <!-- Brand + Tagline -->
+        <div class="mb-10">
+          <p class="text-sm sm:text-base font-semibold uppercase tracking-[0.5em] text-white/90 pl-[0.5em]">Chartlyst
+          </p>
+          <div class="mt-4 flex items-center justify-center gap-4">
+            <span class="h-px w-10 sm:w-20 bg-gradient-to-r from-transparent to-neon/70"></span>
+            <i data-lucide="candlestick-chart" class="w-5 h-5 text-gold"></i>
+            <span class="h-px w-10 sm:w-20 bg-gradient-to-l from-transparent to-neon/70"></span>
+          </div>
+          <p class="tagline-gradient mt-5 text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+            Mastering Markets.<br class="sm:hidden" /> Defining the Edge.
+          </p>
+        </div>
 
         <!-- Badge -->
         <span
@@ -248,7 +307,6 @@
 
         <div id="algo" class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-          <!-- Card 1 -->
           <article class="card rounded-2xl p-6">
             <div class="w-12 h-12 rounded-xl bg-neon/10 flex items-center justify-center mb-5">
               <i data-lucide="target" class="w-6 h-6 text-neon"></i>
@@ -260,7 +318,6 @@
             </p>
           </article>
 
-          <!-- Card 2 -->
           <article class="card rounded-2xl p-6">
             <div class="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mb-5">
               <i data-lucide="scale" class="w-6 h-6 text-gold"></i>
@@ -272,7 +329,6 @@
             </p>
           </article>
 
-          <!-- Card 3 -->
           <article class="card rounded-2xl p-6">
             <div class="w-12 h-12 rounded-xl bg-neon/10 flex items-center justify-center mb-5">
               <i data-lucide="cpu" class="w-6 h-6 text-neon"></i>
@@ -284,7 +340,6 @@
             </p>
           </article>
 
-          <!-- Card 4 -->
           <article class="card rounded-2xl p-6">
             <div class="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mb-5">
               <i data-lucide="shield" class="w-6 h-6 text-gold"></i>
@@ -363,7 +418,9 @@
             class="glow-btn inline-flex items-center gap-2 bg-neon text-ink font-bold px-7 py-3.5 rounded-lg">
             <i data-lucide="file-text" class="w-5 h-5"></i> Request 1-on-1 Syllabus
           </a>
-          <a href="mailto:chartlyst@gmail.com?subject=1-on-1%20Syllabus%20Request"
+          <!-- Opens Gmail compose in a new tab (works without a desktop mail app) -->
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=chartlyst@gmail.com&su=1-on-1%20Syllabus%20Request"
+            target="_blank" rel="noopener"
             class="inline-flex items-center gap-2 border border-slate2 hover:border-neon/60 hover:text-neon text-white font-semibold px-7 py-3.5 rounded-lg transition">
             <i data-lucide="mail" class="w-5 h-5"></i> Or Email Us
           </a>
@@ -371,8 +428,49 @@
       </div>
     </section>
 
-    <!-- ===================== 5. SUBSCRIPTIONS & COURSES ===================== -->
-    <section id="courses" class="py-20 bg-navy">
+    <!-- ===================== 5. MEET YOUR MENTOR ===================== -->
+    <section id="about-mentor" class="py-20 bg-navy">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <span class="text-neon text-sm font-semibold uppercase tracking-widest">Meet Your Mentor</span>
+
+        <!-- Round photo slot: save your photo as vipin.jpg next to index.html.
+             Until then, the initials "VV" are shown. -->
+        <div
+          class="relative w-28 h-28 mx-auto mt-6 mb-5 rounded-full bg-gradient-to-tr from-neon/20 to-gold/20 border border-neon/40 shadow-lg shadow-neon/10 flex items-center justify-center text-neon text-3xl font-bold overflow-hidden">
+          VV
+          <img src="vipin.jpg" alt="Vipin Venu" onerror="this.style.display='none'"
+            class="absolute inset-0 w-full h-full object-cover rounded-full">
+        </div>
+
+        <h2 class="text-2xl sm:text-3xl font-bold text-white">Vipin Venu</h2>
+        <p class="text-gold text-sm font-medium mt-1">Derivatives Strategist &amp; Market Mentor</p>
+
+        <div class="mt-5 flex flex-wrap justify-center gap-2">
+          <span class="text-xs font-semibold text-neon bg-neon/10 border border-neon/30 rounded-full px-3 py-1">5+ Years
+            Market Experience</span>
+          <span
+            class="text-xs font-semibold text-neon bg-neon/10 border border-neon/30 rounded-full px-3 py-1">Full-Time
+            Trader</span>
+          <span
+            class="text-xs font-semibold text-neon bg-neon/10 border border-neon/30 rounded-full px-3 py-1">Rule-Based
+            Approach</span>
+        </div>
+
+        <p class="mt-6 text-slate-300 leading-relaxed">
+          As a full-time options trader and market mentor with more than 5 years of market experience, I believe
+          consistent profitability comes from structured risk management, mathematical edge, and emotional discipline
+          rather than speculative market guessing.
+        </p>
+        <p class="mt-4 text-muted text-sm leading-relaxed">
+          Through <strong class="text-white">Chartlyst</strong>, my mission is to bridge the gap between complex
+          derivative mechanics and practical, rule-based execution, empowering retail traders to master option selling,
+          price action analytics, and algorithmic workflows.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== 6. SUBSCRIPTIONS & COURSES ===================== -->
+    <section id="courses" class="py-20 bg-ink">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto">
           <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Featured Strategy Modules &amp; Subscription
@@ -383,7 +481,6 @@
         <!-- Placeholder layout: edit titles/descriptions when offerings go live -->
         <div class="mt-12 grid md:grid-cols-3 gap-6">
 
-          <!-- Card A -->
           <article class="card rounded-2xl p-7 flex flex-col">
             <span
               class="self-start text-xs font-semibold text-neon bg-neon/10 rounded-full px-3 py-1 mb-4">Beginner</span>
@@ -394,11 +491,10 @@
             <a href="https://wa.me/919995552664?text=Hi%2C%20I%20want%20early%20access%20to%20Foundation%20Trader."
               target="_blank" rel="noopener"
               class="mt-6 inline-flex justify-center items-center gap-2 border border-neon/50 text-neon hover:bg-neon hover:text-ink font-semibold px-5 py-3 rounded-lg transition">
-              Coming Soon / Enquire for Early Access
+              Enquire for Early Access
             </a>
           </article>
 
-          <!-- Card B (highlighted) -->
           <article class="card rounded-2xl p-7 flex flex-col border-neon/40 relative">
             <span
               class="absolute -top-3 right-6 text-xs font-bold text-ink bg-gold rounded-full px-3 py-1">Popular</span>
@@ -411,11 +507,10 @@
             <a href="https://wa.me/919995552664?text=Hi%2C%20I%20want%20early%20access%20to%20Option%20Selling%20Pro."
               target="_blank" rel="noopener"
               class="glow-btn mt-6 inline-flex justify-center items-center gap-2 bg-neon text-ink font-bold px-5 py-3 rounded-lg">
-              Coming Soon / Enquire for Early Access
+              Enquire for Early Access
             </a>
           </article>
 
-          <!-- Card C -->
           <article class="card rounded-2xl p-7 flex flex-col">
             <span
               class="self-start text-xs font-semibold text-neon bg-neon/10 rounded-full px-3 py-1 mb-4">Advanced</span>
@@ -426,18 +521,18 @@
             <a href="https://wa.me/919995552664?text=Hi%2C%20I%20want%20early%20access%20to%20Algo%20%26%20Systematic%20Trader."
               target="_blank" rel="noopener"
               class="mt-6 inline-flex justify-center items-center gap-2 border border-neon/50 text-neon hover:bg-neon hover:text-ink font-semibold px-5 py-3 rounded-lg transition">
-              Coming Soon / Enquire for Early Access
+              Enquire for Early Access
             </a>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ===================== 6. FREE DHAN DEMAT ===================== -->
-    <section id="demat" class="py-20 bg-ink">
+    <!-- ===================== 7. FREE DHAN DEMAT ===================== -->
+    <section id="demat" class="py-20 bg-navy">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          class="relative overflow-hidden rounded-3xl border border-neon/30 bg-gradient-to-br from-navy via-navy to-slate2 p-8 sm:p-12">
+          class="relative overflow-hidden rounded-3xl border border-neon/30 bg-gradient-to-br from-ink via-navy to-slate2 p-8 sm:p-12">
           <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-neon/15 blur-3xl pointer-events-none"></div>
           <div class="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-gold/10 blur-3xl pointer-events-none">
           </div>
@@ -469,7 +564,7 @@
                   <span class="text-slate-200">Personal onboarding guidance from the Chartlyst team.</span>
                 </li>
               </ul>
-              <!-- Replace YOUR_DHAN_REFERRAL_LINK_HERE with your Dhan referral URL -->
+              <!-- Replace https://join.dhan.co/?invite=DDHFW33676 with your Dhan referral URL -->
               <a href="https://join.dhan.co/?invite=DDHFW33676" target="_blank" rel="noopener"
                 class="glow-btn mt-8 inline-flex w-full sm:w-auto justify-center items-center gap-2 bg-neon text-ink font-bold px-8 py-4 rounded-lg">
                 Open Free Dhan Account Now <i data-lucide="arrow-right" class="w-5 h-5"></i>
@@ -480,22 +575,22 @@
       </div>
     </section>
 
-    <!-- ===================== 7. DAILY MARKET INSIGHTS HOOK ===================== -->
-    <section id="insights" class="pb-20 bg-ink">
+    <!-- ===================== 8. DAILY MARKET INSIGHTS HOOK ===================== -->
+    <section id="insights" class="py-20 bg-ink">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="card rounded-3xl p-8 sm:p-12 text-center border-gold/30">
           <div class="mx-auto w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center mb-5">
             <i data-lucide="line-chart" class="w-7 h-7 text-gold"></i>
           </div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Get Daily Nifty, BankNifty &amp; Crypto Notes
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Catch Our Market Insights
           </h2>
           <p class="mt-4 text-muted max-w-2xl mx-auto leading-relaxed">
             Follow <span class="text-white font-semibold">@chartlyst</span> on Instagram for regular market analytics,
-            option chain breakdowns and trading updates.
+            and trading updates.
           </p>
           <a href="https://instagram.com/chartlyst" target="_blank" rel="noopener"
             class="mt-7 inline-flex items-center gap-2 bg-gold hover:bg-yellow-300 text-ink font-bold px-7 py-3.5 rounded-lg transition hover:-translate-y-0.5">
-            <i data-lucide="instagram" class="w-5 h-5"></i> Follow @chartlyst
+            <i class="fa-brands fa-instagram text-lg"></i> Follow @chartlyst
           </a>
         </div>
       </div>
@@ -503,7 +598,7 @@
 
   </main>
 
-  <!-- ===================== 8. FOOTER ===================== -->
+  <!-- ===================== 9. FOOTER ===================== -->
   <footer id="contact" class="bg-navy border-t border-slate2">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-8">
 
@@ -514,6 +609,7 @@
             <img src="logo.png" alt="Chartlyst Logo" class="h-9 w-auto">
             <span class="text-xl font-bold tracking-tight">Chartlyst</span>
           </a>
+          <p class="mt-2 text-xs font-medium text-neon/90">Mastering Markets. Defining the Edge.</p>
           <p class="mt-4 text-sm text-muted leading-relaxed">
             Stock market education focused on price action, option selling and algo trading, built around discipline,
             rules and capital protection.
@@ -528,6 +624,7 @@
             <li><a href="#why" class="hover:text-neon transition">Why Option Selling</a></li>
             <li><a href="#algo" class="hover:text-neon transition">Algo Trading</a></li>
             <li><a href="#mentorship" class="hover:text-neon transition">Mentorship</a></li>
+            <li><a href="#about-mentor" class="hover:text-neon transition">Meet Your Mentor</a></li>
             <li><a href="#courses" class="hover:text-neon transition">Courses</a></li>
             <li><a href="#demat" class="hover:text-neon transition">Free Demat</a></li>
           </ul>
@@ -538,7 +635,8 @@
           <h4 class="text-sm font-semibold uppercase tracking-widest text-white mb-4">Get in Touch</h4>
           <ul class="space-y-3 text-sm">
             <li>
-              <a href="mailto:chartlyst@gmail.com"
+              <!-- Gmail compose in new tab; the address stays visible so it can be copied -->
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=chartlyst@gmail.com" target="_blank" rel="noopener"
                 class="inline-flex items-center gap-2 text-muted hover:text-neon transition">
                 <i data-lucide="mail" class="w-4 h-4"></i> chartlyst@gmail.com
               </a>
@@ -546,13 +644,13 @@
             <li>
               <a href="https://instagram.com/chartlyst" target="_blank" rel="noopener"
                 class="inline-flex items-center gap-2 text-muted hover:text-neon transition">
-                <i data-lucide="instagram" class="w-4 h-4"></i> @chartlyst
+                <i class="fa-brands fa-instagram"></i> @chartlyst
               </a>
             </li>
             <li>
               <a href="https://wa.me/919995552664" target="_blank" rel="noopener"
                 class="inline-flex items-center gap-2 text-muted hover:text-neon transition">
-                <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp
               </a>
             </li>
           </ul>
@@ -566,9 +664,8 @@
           <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
             <strong class="text-gold">DISCLAIMER:</strong> Chartlyst provides stock market education, price action
             analytics, option selling concepts, and algo trading awareness for informational and educational purposes
-            only. We are NOT a SEBI-registered advisory service or research analyst. Trading in options, equities, and
-            crypto carries inherent financial risk. Please consult a qualified financial advisor before making any
-            investment decisions.
+            only. We are not a SEBI-registered advisory service or research analyst. Trading in options, equities, and
+            crypto carries inherent financial risk.
           </p>
         </div>
       </div>
@@ -584,12 +681,23 @@
     // Render Lucide icons
     lucide.createIcons();
 
-    // Mobile menu toggle
-    const btn = document.getElementById('menuBtn');
-    const menu = document.getElementById('mobileMenu');
-    btn.addEventListener('click', () => menu.classList.toggle('hidden'));
-    // Close menu after tapping a link
-    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+    // Slide-in menu: open / close
+    const menuBtn = document.getElementById('menuBtn');
+    const menuPanel = document.getElementById('menuPanel');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const menuClose = document.getElementById('menuClose');
+
+    function setMenu(open) {
+      menuPanel.classList.toggle('open', open);
+      menuOverlay.classList.toggle('open', open);
+      menuBtn.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+    menuBtn.addEventListener('click', () => setMenu(true));
+    menuClose.addEventListener('click', () => setMenu(false));
+    menuOverlay.addEventListener('click', () => setMenu(false));
+    menuPanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
   </script>
 </body>
 
