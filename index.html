@@ -144,33 +144,17 @@
   <header class="fixed top-0 inset-x-0 z-40 bg-ink/85 backdrop-blur border-b border-slate2">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
 
-      <!-- Left: Logo + brand + tagline -->
-      <a href="#welcome" class="flex items-center gap-3">
-        <img src="logo.png" alt="Chartlyst Logo" class="h-10 w-auto">
-        <div class="leading-tight">
-          <span class="block text-2xl font-bold tracking-tight text-white">Chartlyst</span>
-          <!-- Tagline in top bar (hidden on very small screens; shown in hero instead) -->
-          <span class="hidden sm:block text-[11px] font-medium tracking-wide text-neon/90">Mastering Markets. Defining
-            the Edge.</span>
-        </div>
+      <!-- Left: Logo (wordmark already contains the brand name) -->
+      <a href="#welcome" class="flex items-center">
+        <img src="logo.png" alt="Chartlyst" width="1308" height="257" class="h-10 sm:h-12 w-auto shrink-0">
       </a>
 
-      <!-- Right: WhatsApp icon, Instagram icon, Menu button -->
-      <div class="flex items-center gap-2 sm:gap-3">
-        <a href="https://wa.me/919995552664" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"
-          class="glow-btn w-10 h-10 rounded-full bg-neon text-ink flex items-center justify-center text-xl">
-          <i class="fa-brands fa-whatsapp"></i>
-        </a>
-        <a href="https://instagram.com/chartlyst" target="_blank" rel="noopener" aria-label="Instagram @chartlyst"
-          class="w-10 h-10 rounded-full border border-slate2 text-white hover:text-neon hover:border-neon/60 flex items-center justify-center text-lg transition">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-        <button id="menuBtn" aria-label="Open menu" aria-expanded="false"
-          class="h-10 px-3 sm:px-4 rounded-full border border-slate2 text-white hover:text-neon hover:border-neon/60 flex items-center gap-2 transition">
-          <i data-lucide="menu" class="w-5 h-5"></i>
-          <span class="hidden sm:inline text-sm font-semibold">Menu</span>
-        </button>
-      </div>
+      <!-- Right: Menu button (WhatsApp and Instagram are inside the menu panel) -->
+      <button id="menuBtn" aria-label="Open menu" aria-expanded="false"
+        class="h-10 px-3 sm:px-4 rounded-full border border-slate2 text-white hover:text-neon hover:border-neon/60 flex items-center gap-2 transition">
+        <i data-lucide="menu" class="w-5 h-5"></i>
+        <span class="hidden sm:inline text-sm font-semibold">Menu</span>
+      </button>
     </nav>
   </header>
 
@@ -191,21 +175,24 @@
           Selling</a></li>
       <li><a href="#algo" class="block px-3 py-3 rounded-lg hover:bg-slate2 hover:text-neon transition">Algo Trading</a>
       </li>
-      <li><a href="#mentorship"
-          class="block px-3 py-3 rounded-lg hover:bg-slate2 hover:text-neon transition">Mentorship</a></li>
+      <li><a href="#courses" class="block px-3 py-3 rounded-lg hover:bg-slate2 hover:text-neon transition">Courses
+          &amp; Mentorship</a></li>
       <li><a href="#about-mentor" class="block px-3 py-3 rounded-lg hover:bg-slate2 hover:text-neon transition">Meet
           Your Mentor</a></li>
-      <li><a href="#courses" class="block px-3 py-3 rounded-lg hover:bg-slate2 hover:text-neon transition">Courses</a>
-      </li>
-      <li><a href="#demat" class="block px-3 py-3 rounded-lg hover:bg-slate2 hover:text-neon transition">Free Demat</a>
+      <li><a href="#demat" class="block px-3 py-3 rounded-lg hover:bg-slate2 hover:text-neon transition">Open
+          Account</a>
       </li>
       <li><a href="#contact" class="block px-3 py-3 rounded-lg hover:bg-slate2 hover:text-neon transition">Contact</a>
       </li>
     </ul>
-    <div class="p-5 border-t border-slate2">
+    <div class="p-5 border-t border-slate2 space-y-3">
       <a href="https://wa.me/919995552664" target="_blank" rel="noopener"
         class="glow-btn flex justify-center items-center gap-2 bg-neon text-ink font-semibold px-5 py-3 rounded-lg">
         <i class="fa-brands fa-whatsapp text-lg"></i> Enquire on WhatsApp
+      </a>
+      <a href="https://instagram.com/chartlyst" target="_blank" rel="noopener"
+        class="flex justify-center items-center gap-2 border border-slate2 text-white hover:text-neon hover:border-neon/60 font-semibold px-5 py-3 rounded-lg transition">
+        <i class="fa-brands fa-instagram text-lg"></i> @chartlyst
       </a>
     </div>
   </aside>
@@ -217,11 +204,11 @@
       <div class="grid-overlay absolute inset-0 pointer-events-none"></div>
       <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
-        <!-- Brand + Tagline -->
+        <!-- Large logo + Tagline -->
         <div class="mb-10">
-          <p class="text-sm sm:text-base font-semibold uppercase tracking-[0.5em] text-white/90 pl-[0.5em]">Chartlyst
-          </p>
-          <div class="mt-4 flex items-center justify-center gap-4">
+          <img src="logo.png" alt="Chartlyst" width="1308" height="257"
+            class="mx-auto mb-6 w-64 sm:w-96 md:w-[30rem] h-auto">
+          <div class="flex items-center justify-center gap-4">
             <span class="h-px w-10 sm:w-20 bg-gradient-to-r from-transparent to-neon/70"></span>
             <i data-lucide="candlestick-chart" class="w-5 h-5 text-gold"></i>
             <span class="h-px w-10 sm:w-20 bg-gradient-to-l from-transparent to-neon/70"></span>
@@ -235,13 +222,13 @@
         <span
           class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-neon bg-neon/10 border border-neon/30 rounded-full px-4 py-1.5 mb-6">
           <span class="w-2 h-2 rounded-full bg-neon animate-pulse"></span>
-          Welcome to Chartlyst • Master Rule-Based Trading
+          Welcome to Chartlyst •
         </span>
 
         <!-- Headline -->
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-          Build Wealth Through Disciplined Investing,
-          <span class="gradient-text">Option Selling &amp; Algo Trading</span>
+          Build Wealth Through Disciplined
+          <span class="gradient-text">Investing, Option Selling &amp; Algo Trading</span>
         </h1>
 
         <!-- Welcome note -->
@@ -257,7 +244,7 @@
 
         <!-- CTAs -->
         <div class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="#mentorship"
+          <a href="#courses"
             class="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-slate2 bg-navy hover:border-neon/60 hover:text-neon text-white font-semibold px-7 py-3.5 rounded-lg transition">
             <i data-lucide="graduation-cap" class="w-5 h-5"></i> Explore Mentorship Programs
           </a>
@@ -266,6 +253,11 @@
             <i data-lucide="wallet" class="w-5 h-5"></i> Open Free Dhan Demat Account
           </a>
         </div>
+
+        <!-- Markets covered -->
+        <p class="mt-6 text-xs sm:text-sm font-medium uppercase tracking-widest text-muted">
+          Equity • F&ampO • Crypto
+        </p>
 
         <!-- Trust bar -->
         <div class="mt-14 grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4">
@@ -358,72 +350,73 @@
       </div>
     </section>
 
-    <!-- ===================== 4. MENTORSHIP & LEARNING PROGRAM ===================== -->
-    <section id="mentorship" class="py-20 bg-ink">
+    <!-- ===================== 4. LEARN WITH CHARTLYST (Courses + Mentorship merged) ===================== -->
+    <section id="courses" class="py-20 bg-ink">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto">
-          <span class="text-neon text-sm font-semibold uppercase tracking-widest">Mentorship</span>
-          <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold tracking-tight">Personalized Online Classes</h2>
+          <span class="text-neon text-sm font-semibold uppercase tracking-widest">Mentorship &amp; Courses</span>
+          <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold tracking-tight">Learn with Chartlyst</h2>
           <p class="mt-4 text-muted leading-relaxed">
-            Interactive 1-on-1 and batch learning, tailored to your individual goals, capital and experience level.
+            Personalized online classes, available 1-on-1 or in batches, tailored to your goals, capital and
+            experience level. Flexible learning tracks designed for traders at every level.
           </p>
         </div>
 
         <div class="mt-12 grid md:grid-cols-3 gap-6">
 
-          <article class="card rounded-2xl p-7">
-            <div class="flex items-center justify-between mb-5">
-              <div class="w-12 h-12 rounded-xl bg-neon/10 flex items-center justify-center">
-                <i data-lucide="candlestick-chart" class="w-6 h-6 text-neon"></i>
-              </div>
-              <span class="text-xs font-semibold text-gold bg-gold/10 rounded-full px-3 py-1">Module 1</span>
-            </div>
-            <h3 class="text-xl font-bold mb-2">Price Action &amp; Market Structure</h3>
-            <p class="text-sm text-muted leading-relaxed">
-              Reading naked charts, identifying liquidity zones, multi-timeframe analysis, and building clear entry and
-              exit setups.
+          <article class="card rounded-2xl p-7 flex flex-col">
+            <span
+              class="self-start text-xs font-semibold text-neon bg-neon/10 rounded-full px-3 py-1 mb-4">Beginner</span>
+            <h3 class="text-xl font-bold mb-2">Foundation Trader</h3>
+            <p class="text-sm text-muted leading-relaxed flex-1">
+              Basics of investing, chart reading and risk management. Build the base every consistent trader stands on.
             </p>
+            <a href="https://wa.me/919995552664?text=Hi%2C%20I%20want%20to%20know%20more%20about%20Foundation%20Trader."
+              target="_blank" rel="noopener"
+              class="mt-5 inline-flex justify-center items-center gap-2 border border-neon/50 text-neon hover:bg-neon hover:text-ink font-semibold px-5 py-3 rounded-lg transition">
+              Enquire
+            </a>
           </article>
 
-          <article class="card rounded-2xl p-7">
-            <div class="flex items-center justify-between mb-5">
-              <div class="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center">
-                <i data-lucide="layers" class="w-6 h-6 text-gold"></i>
-              </div>
-              <span class="text-xs font-semibold text-gold bg-gold/10 rounded-full px-3 py-1">Module 2</span>
-            </div>
-            <h3 class="text-xl font-bold mb-2">Advanced Option Selling Strategies</h3>
-            <p class="text-sm text-muted leading-relaxed">
-              Execution frameworks, non-directional setups, risk-reward management and practical adjustment techniques.
+          <article class="card rounded-2xl p-7 flex flex-col border-neon/40 relative">
+            <span
+              class="absolute -top-3 right-6 text-xs font-bold text-ink bg-gold rounded-full px-3 py-1">Popular</span>
+            <span
+              class="self-start text-xs font-semibold text-gold bg-gold/10 rounded-full px-3 py-1 mb-4">Intermediate</span>
+            <h3 class="text-xl font-bold mb-2">Option Selling Pro</h3>
+            <p class="text-sm text-muted leading-relaxed flex-1">
+              Deep-dive into non-directional strategies, adjustment rules and live market execution.
             </p>
+            <a href="https://wa.me/919995552664?text=Hi%2C%20I%20want%20to%20know%20more%20about%20Option%20Selling%20Pro."
+              target="_blank" rel="noopener"
+              class="glow-btn mt-5 inline-flex justify-center items-center gap-2 bg-neon text-ink font-bold px-5 py-3 rounded-lg">
+              Enquire
+            </a>
           </article>
 
-          <article class="card rounded-2xl p-7">
-            <div class="flex items-center justify-between mb-5">
-              <div class="w-12 h-12 rounded-xl bg-neon/10 flex items-center justify-center">
-                <i data-lucide="webhook" class="w-6 h-6 text-neon"></i>
-              </div>
-              <span class="text-xs font-semibold text-gold bg-gold/10 rounded-full px-3 py-1">Module 3</span>
-            </div>
-            <h3 class="text-xl font-bold mb-2">Algo Trading &amp; Webhook Automation</h3>
-            <p class="text-sm text-muted leading-relaxed">
-              Introduction to algorithmic execution, connecting charts and signals via APIs, and rule-based automation.
+          <article class="card rounded-2xl p-7 flex flex-col">
+            <span
+              class="self-start text-xs font-semibold text-neon bg-neon/10 rounded-full px-3 py-1 mb-4">Advanced</span>
+            <h3 class="text-xl font-bold mb-2">Algo &amp; Systematic Trader</h3>
+            <p class="text-sm text-muted leading-relaxed flex-1">
+              Building, backtesting and automating option selling strategies via trading APIs.
             </p>
+            <a href="https://wa.me/919995552664?text=Hi%2C%20I%20want%20to%20know%20more%20about%20Algo%20%26%20Systematic%20Trader."
+              target="_blank" rel="noopener"
+              class="mt-5 inline-flex justify-center items-center gap-2 border border-neon/50 text-neon hover:bg-neon hover:text-ink font-semibold px-5 py-3 rounded-lg transition">
+              Enquire
+            </a>
           </article>
         </div>
 
-        <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="https://wa.me/919995552664?text=Hi%20Chartlyst%2C%20please%20share%20the%201-on-1%20syllabus."
+        <!-- Email enquiry for the whole section (opens Gmail compose in a new tab) -->
+        <div class="mt-10 text-center">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=chartlyst@gmail.com&su=Course%20Enquiry"
             target="_blank" rel="noopener"
-            class="glow-btn inline-flex items-center gap-2 bg-neon text-ink font-bold px-7 py-3.5 rounded-lg">
-            <i data-lucide="file-text" class="w-5 h-5"></i> Request 1-on-1 Syllabus
+            class="inline-flex items-center gap-2 border border-neon/50 text-neon hover:bg-neon hover:text-ink font-semibold px-7 py-3.5 rounded-lg transition">
+            <i data-lucide="mail" class="w-5 h-5"></i> Enquire on E-mail
           </a>
-          <!-- Opens Gmail compose in a new tab (works without a desktop mail app) -->
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=chartlyst@gmail.com&su=1-on-1%20Syllabus%20Request"
-            target="_blank" rel="noopener"
-            class="inline-flex items-center gap-2 border border-slate2 hover:border-neon/60 hover:text-neon text-white font-semibold px-7 py-3.5 rounded-lg transition">
-            <i data-lucide="mail" class="w-5 h-5"></i> Or Email Us
-          </a>
+          <p class="mt-3 text-xs text-muted">or write to chartlyst@gmail.com</p>
         </div>
       </div>
     </section>
@@ -469,87 +462,34 @@
       </div>
     </section>
 
-    <!-- ===================== 6. SUBSCRIPTIONS & COURSES ===================== -->
-    <section id="courses" class="py-20 bg-ink">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto">
-          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Featured Strategy Modules &amp; Subscription
-            Bundles</h2>
-          <p class="mt-4 text-muted">Flexible learning tracks designed for traders at every level.</p>
-        </div>
-
-        <!-- Placeholder layout: edit titles/descriptions when offerings go live -->
-        <div class="mt-12 grid md:grid-cols-3 gap-6">
-
-          <article class="card rounded-2xl p-7 flex flex-col">
-            <span
-              class="self-start text-xs font-semibold text-neon bg-neon/10 rounded-full px-3 py-1 mb-4">Beginner</span>
-            <h3 class="text-xl font-bold mb-2">Foundation Trader</h3>
-            <p class="text-sm text-muted leading-relaxed flex-1">
-              Basics of investing, chart reading and risk management. Build the base every consistent trader stands on.
-            </p>
-            <a href="https://wa.me/919995552664?text=Hi%2C%20I%20want%20early%20access%20to%20Foundation%20Trader."
-              target="_blank" rel="noopener"
-              class="mt-6 inline-flex justify-center items-center gap-2 border border-neon/50 text-neon hover:bg-neon hover:text-ink font-semibold px-5 py-3 rounded-lg transition">
-              Enquire for Early Access
-            </a>
-          </article>
-
-          <article class="card rounded-2xl p-7 flex flex-col border-neon/40 relative">
-            <span
-              class="absolute -top-3 right-6 text-xs font-bold text-ink bg-gold rounded-full px-3 py-1">Popular</span>
-            <span
-              class="self-start text-xs font-semibold text-gold bg-gold/10 rounded-full px-3 py-1 mb-4">Intermediate</span>
-            <h3 class="text-xl font-bold mb-2">Option Selling Pro</h3>
-            <p class="text-sm text-muted leading-relaxed flex-1">
-              Deep-dive into non-directional strategies, adjustment rules and live market execution.
-            </p>
-            <a href="https://wa.me/919995552664?text=Hi%2C%20I%20want%20early%20access%20to%20Option%20Selling%20Pro."
-              target="_blank" rel="noopener"
-              class="glow-btn mt-6 inline-flex justify-center items-center gap-2 bg-neon text-ink font-bold px-5 py-3 rounded-lg">
-              Enquire for Early Access
-            </a>
-          </article>
-
-          <article class="card rounded-2xl p-7 flex flex-col">
-            <span
-              class="self-start text-xs font-semibold text-neon bg-neon/10 rounded-full px-3 py-1 mb-4">Advanced</span>
-            <h3 class="text-xl font-bold mb-2">Algo &amp; Systematic Trader</h3>
-            <p class="text-sm text-muted leading-relaxed flex-1">
-              Building, backtesting and automating option selling strategies via trading APIs.
-            </p>
-            <a href="https://wa.me/919995552664?text=Hi%2C%20I%20want%20early%20access%20to%20Algo%20%26%20Systematic%20Trader."
-              target="_blank" rel="noopener"
-              class="mt-6 inline-flex justify-center items-center gap-2 border border-neon/50 text-neon hover:bg-neon hover:text-ink font-semibold px-5 py-3 rounded-lg transition">
-              Enquire for Early Access
-            </a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== 7. FREE DHAN DEMAT ===================== -->
-    <section id="demat" class="py-20 bg-navy">
+    <!-- ===================== 6. OPEN YOUR TRADING ACCOUNTS (Dhan + Delta Exchange) ===================== -->
+    <section id="demat" class="py-20 bg-ink">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          class="relative overflow-hidden rounded-3xl border border-neon/30 bg-gradient-to-br from-ink via-navy to-slate2 p-8 sm:p-12">
-          <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-neon/15 blur-3xl pointer-events-none"></div>
-          <div class="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-gold/10 blur-3xl pointer-events-none">
-          </div>
 
-          <div class="relative grid lg:grid-cols-2 gap-10 items-center">
-            <div>
-              <span
-                class="inline-flex items-center gap-2 text-xs font-semibold text-gold bg-gold/10 border border-gold/30 rounded-full px-3 py-1 mb-4">
-                <i data-lucide="gift" class="w-3.5 h-3.5"></i> Free Account Opening
-              </span>
-              <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
-                Start Trading with India's Premier Platform — Free Dhan Demat Account
-              </h2>
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Open Your Trading Accounts</h2>
+          <p class="mt-4 text-muted leading-relaxed">Pick the platform for what you trade, and get guided by Chartlyst.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-6">
+
+          <!-- ---------- Dhan card ---------- -->
+          <div
+            class="relative overflow-hidden rounded-3xl border border-neon/30 bg-gradient-to-br from-ink via-navy to-slate2 p-8 sm:p-10 flex flex-col">
+            <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-neon/15 blur-3xl pointer-events-none">
             </div>
 
-            <div>
-              <ul class="space-y-4">
+            <div class="relative flex flex-col flex-1">
+              <span
+                class="self-start inline-flex items-center gap-2 text-xs font-semibold text-gold bg-gold/10 border border-gold/30 rounded-full px-3 py-1 mb-4">
+                <i data-lucide="gift" class="w-3.5 h-3.5"></i> Free Account Opening
+              </span>
+              <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight leading-tight">
+                Start Trading with India's Premier Platform — Free Dhan Demat Account
+              </h3>
+
+              <ul class="mt-6 space-y-4">
                 <li class="flex items-start gap-3">
                   <i data-lucide="check-circle-2" class="w-6 h-6 text-neon shrink-0 mt-0.5"></i>
                   <span class="text-slate-200">Zero account opening fees &amp; lightning-fast execution.</span>
@@ -564,19 +504,79 @@
                   <span class="text-slate-200">Personal onboarding guidance from the Chartlyst team.</span>
                 </li>
               </ul>
-              <!-- Replace https://join.dhan.co/?invite=DDHFW33676 with your Dhan referral URL -->
-              <a href="https://join.dhan.co/?invite=DDHFW33676" target="_blank" rel="noopener"
-                class="glow-btn mt-8 inline-flex w-full sm:w-auto justify-center items-center gap-2 bg-neon text-ink font-bold px-8 py-4 rounded-lg">
-                Open Free Dhan Account Now <i data-lucide="arrow-right" class="w-5 h-5"></i>
-              </a>
+
+              <!-- Chartlyst Member Benefit -->
+              <div class="mt-6 rounded-xl border border-gold/40 bg-gold/5 p-5">
+                <p class="text-gold text-sm font-bold uppercase tracking-wider mb-2">Chartlyst Member Benefit</p>
+                <p class="text-slate-200 text-sm leading-relaxed">
+                  Open your Dhan account through our link and get an exclusive discount on Chartlyst courses, plus a
+                  free onboarding session.
+                </p>
+              </div>
+
+              <div class="mt-auto pt-8">
+                <!-- Dhan referral link -->
+                <a href="https://join.dhan.co/?invite=DDHFW33676" target="_blank" rel="noopener"
+                  class="glow-btn inline-flex w-full sm:w-auto justify-center items-center gap-2 bg-neon text-ink font-bold px-8 py-4 rounded-lg">
+                  Open Free Dhan Account Now <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+                <p class="mt-4 text-xs text-muted leading-relaxed">
+                  Chartlyst may earn a referral benefit when you open an account through this link, at no extra cost
+                  to you. Account opening is subject to Dhan's terms.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ---------- Delta Exchange card ---------- -->
+          <div
+            class="relative overflow-hidden rounded-3xl border border-gold/30 bg-gradient-to-br from-ink via-navy to-slate2 p-8 sm:p-10 flex flex-col">
+            <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-gold/10 blur-3xl pointer-events-none">
+            </div>
+
+            <div class="relative flex flex-col flex-1">
+              <span
+                class="self-start inline-flex items-center gap-2 text-xs font-semibold text-gold bg-gold/10 border border-gold/30 rounded-full px-3 py-1 mb-4">
+                <i data-lucide="bitcoin" class="w-3.5 h-3.5"></i> Crypto Trading
+              </span>
+              <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight leading-tight">
+                Trade Crypto with Delta Exchange
+              </h3>
+              <p class="mt-4 text-slate-300 leading-relaxed">
+                Open your crypto trading account through the Chartlyst link and get a fee benefit when you start.
+              </p>
+
+              <!-- Referral benefit -->
+              <div class="mt-6 rounded-xl border border-gold/40 bg-gold/5 p-5">
+                <p class="text-gold text-sm font-bold uppercase tracking-wider mb-2">Referral Benefit</p>
+                <p class="text-slate-200 text-sm leading-relaxed">
+                  10% trading fee discount for the first 2 months when you sign up through our link.
+                </p>
+              </div>
+
+              <div class="mt-auto pt-8">
+                <!-- Replace YOUR_DELTA_REFERRAL_LINK_HERE with your Delta Exchange referral URL -->
+                <a href="https://www.delta.exchange/?code=CHARTLYST" target="_blank" rel="noopener"
+                  class="glow-btn inline-flex w-full sm:w-auto justify-center items-center gap-2 bg-neon text-ink font-bold px-8 py-4 rounded-lg">
+                  Open Delta Exchange Account <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+                <p class="mt-4 text-xs text-muted leading-relaxed">
+                  Chartlyst may earn a referral benefit when you open an account through this link, at no extra cost
+                  to you. Account opening is subject to Delta Exchange's terms.
+                </p>
+                <p class="mt-2 text-xs text-gold/90 leading-relaxed">
+                  Crypto trading is highly volatile and carries a high risk of loss. Trade only with capital you can
+                  afford to lose.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===================== 8. DAILY MARKET INSIGHTS HOOK ===================== -->
-    <section id="insights" class="py-20 bg-ink">
+    <!-- ===================== 7. DAILY MARKET INSIGHTS HOOK ===================== -->
+    <section id="insights" class="py-20 bg-navy">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="card rounded-3xl p-8 sm:p-12 text-center border-gold/30">
           <div class="mx-auto w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center mb-5">
@@ -598,16 +598,15 @@
 
   </main>
 
-  <!-- ===================== 9. FOOTER ===================== -->
+  <!-- ===================== 8. FOOTER ===================== -->
   <footer id="contact" class="bg-navy border-t border-slate2">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-8">
 
       <div class="grid md:grid-cols-3 gap-10">
         <!-- Brand summary -->
         <div>
-          <a href="#welcome" class="flex items-center gap-3">
-            <img src="logo.png" alt="Chartlyst Logo" class="h-9 w-auto">
-            <span class="text-xl font-bold tracking-tight">Chartlyst</span>
+          <a href="#welcome" class="inline-flex items-center">
+            <img src="logo.png" alt="Chartlyst" width="1308" height="257" class="h-10 w-auto">
           </a>
           <p class="mt-2 text-xs font-medium text-neon/90">Mastering Markets. Defining the Edge.</p>
           <p class="mt-4 text-sm text-muted leading-relaxed">
@@ -623,10 +622,9 @@
             <li><a href="#welcome" class="hover:text-neon transition">Welcome</a></li>
             <li><a href="#why" class="hover:text-neon transition">Why Option Selling</a></li>
             <li><a href="#algo" class="hover:text-neon transition">Algo Trading</a></li>
-            <li><a href="#mentorship" class="hover:text-neon transition">Mentorship</a></li>
+            <li><a href="#courses" class="hover:text-neon transition">Courses &amp; Mentorship</a></li>
             <li><a href="#about-mentor" class="hover:text-neon transition">Meet Your Mentor</a></li>
-            <li><a href="#courses" class="hover:text-neon transition">Courses</a></li>
-            <li><a href="#demat" class="hover:text-neon transition">Free Demat</a></li>
+            <li><a href="#demat" class="hover:text-neon transition">Open Account</a></li>
           </ul>
         </div>
 
@@ -664,7 +662,7 @@
           <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
             <strong class="text-gold">DISCLAIMER:</strong> Chartlyst provides stock market education, price action
             analytics, option selling concepts, and algo trading awareness for informational and educational purposes
-            only. We are not a SEBI-registered advisory service or research analyst. Trading in options, equities, and
+            only. We are not a SEBI-registered advisory service or research analyst. Trading in F&ampO, equities, and
             crypto carries inherent financial risk.
           </p>
         </div>
